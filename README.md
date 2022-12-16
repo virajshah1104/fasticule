@@ -37,3 +37,5 @@ Select any 2 of the following 3 challenges. Once a challenge is completed, commi
 1. The service provides an http endpoint - use the provided self-signed certificate and key (in the `localhost-cert` directory) to create an https endoint for the service. Update the README to describe how to do this and how to test that it works.
 1. By default, Docker containers run as root. Following the principle of least privilege, update the Dockerfile to run the service as a non-root user. 
 1. Create a GitHub Actions workflow to build the docker image on each commit to the main branch. 
+
+Uvicorn Command to run use self signed certificate and key => uvicorn --ssl-keyfile=./localhost-cert/key.pem --ssl-certfile ./localhost-cert/cert.pem --app-dir service main:service --reload
