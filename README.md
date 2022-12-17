@@ -51,6 +51,7 @@ Select any 2 of the following 3 challenges. Once a challenge is completed, commi
     ```
 
     * Executing the uvicorn command - 
+    
     ![Image 1 - Uvicorn command run](/screenshots/s1.png "Image 1 - Uvicorn command run")
 
     * Service running on Https - 
@@ -59,7 +60,8 @@ Select any 2 of the following 3 challenges. Once a challenge is completed, commi
 
 1. Task 2  - Run the docker service as a non-root user.
 
-    * Initially, when the service is run without modifying the docker file, I ran the following command to check for the user -
+    * Initially, when the service is run without modifying the docker file, I ran the following command to check for the user
+
     ```bash
     docker exec -it [container_name] sh -c "whoami"
     ```
