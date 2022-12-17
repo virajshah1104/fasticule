@@ -50,19 +50,29 @@ Select any 2 of the following 3 challenges. Once a challenge is completed, commi
     uvicorn --ssl-keyfile=./localhost-cert/key.pem --ssl-certfile ./localhost-cert/cert.pem --app-dir service main:service --reload
     ```
 
+    * Executing the uvicorn command - 
     ![Image 1 - Uvicorn command run](/screenshots/s1.png "Image 1 - Uvicorn command run")
+
+    * Service running on Https - 
 
     ![Image 2 - Service running on https](/screenshots/s2.png "Image 2 - Service running on https")
 
 1. Task 2  - Run the docker service as a non-root user.
 
     * Initially, when the service is run without modifying the docker file, I ran the following command to check for the user -
-    [docker exec -it [container_name] sh -c "whoami"] -> which gave the result as `root`.
+    ```bash
+    docker exec -it [container_name] sh -c "whoami"
+    ```
+
+    * Service user before dockerfile was updated - 
 
     ![Image 3 - User before dockerfile update](/screenshots/s3.png "Image 3 - User before dockerfile update")
 
     * I modified the docker file to create a new group called "appusers" and created a user within it with the name "appuser".
-    Before running the uvicorn main service, I added the USER appuser statement to run the service as the non root user.
-    After buiding the docker file and running it with a different tag, to verify that the service is indeed being run as a non root user, i executed the same exec command again.
+    Before running the uvicorn main service, I added the `USER appuser` statement to run the service as the non root user.Next, I built the dockerfile again and executed the exec command.
+
+    * Service user after dockerfile was updated - 
 
     ![Image 4 - User after updating dockerfile](/screenshots/s4.png "Image 4 - User after updating dockerfile")
+
+    * In the first execution, it gave the result as `root` while in the second one it gave the result as `appuser` which means that the service was correctly running as the non-root appuser.
